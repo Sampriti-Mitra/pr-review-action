@@ -16,3 +16,7 @@
       runs-on: ubuntu-latest
       steps:
         - run: echo "This PR has changes to be addressed"
+          uses: Sampriti-Mitra/pr-review-action@v1
+          with:
+            reviewer-name: github.event.actor.login
+            ready-for-review-timestamp: github.event.created_at
