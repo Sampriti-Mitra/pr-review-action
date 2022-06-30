@@ -5,6 +5,7 @@
     approved:
       if: github.event.review.state == 'approved'
       runs-on: ubuntu-latest
+      name: step1
       steps:
         - name: approve action step
         id: approve
@@ -15,6 +16,7 @@
     reviewed:
       if: github.event.review.state == 'changes_requested' || github.event.review.state == 'commented'
       runs-on: ubuntu-latest
+      name: step2
       steps:
         - name: change requested/comment action step
         id: comment
