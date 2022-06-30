@@ -1,0 +1,21 @@
+# action.yml
+name: 'Hello World'
+description: 'Thank someone for reviewing PR and record the time taken to review'
+inputs:
+  reviewer-name:  # id of input
+    description: 'Who is the reviewer'
+    required: true
+    default: 'Sam'
+  ready-for-review-timestamp:
+    description: 'When was the pr ready for review'
+    required: true
+    default: '1234'
+outputs:
+  time: # id of output
+    description: 'The time reviewer took to review'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.reviewer-name }}
+    - ${{ inputs.ready-for-review-timestamp }}
