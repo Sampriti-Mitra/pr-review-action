@@ -3,14 +3,14 @@ on: [push]
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: A job to say hello to the reviewer
     steps:
       - name: Hello world action step
         id: hello
-        uses: actions/pr-review-action@v1
+        uses: Sampriti-Mitra/pr-review-action@v1
         with:
           reviewer-name: 'Sam'
-          eady-for-review-timestamp: '2014-12-25T09:30:00'
+          ready-for-review-timestamp: '2014-12-25T09:30:00'
       # Use the output from the `hello` step
       - name: Get the output time
         run: echo "The time taken for review was ${{ steps.hello.outputs.time }}"
