@@ -2,17 +2,25 @@
     pull_request_review:
       types: [submitted]
   jobs:
-    approved:
-      if: github.event.review.state == 'approved'
-      runs-on: ubuntu-latest
-      steps:
-        - run: echo "This PR was approved"
-          uses: Sampriti-Mitra/pr-review-action@v1
-          with:
-            reviewer-name: github.event.actor.login
-            ready-for-review-timestamp: github.event.created_at
     reviewed:
       if: github.event.review.state == 'changes_requested' || github.event.review.state == 'commented'
       runs-on: ubuntu-latest
+      name: step2
       steps:
-        - run: echo "This PR has changes to be addressed"
+        - name: change requested/comment action step
+        id: comment
+        uses: Sampriti-Mitra/pr-review-action@v1
+        with:
+          reviewer-name: github.event.actor.login
+          ready-for-review-timestamp: github.event.created_at
+    approved:
+      if: github.event.review.state == 'approved'
+      runs-on: ubuntu-latest
+      name: step1
+      steps:
+        - name: approve action step
+        id: approve
+        uses: Sampriti-Mitra/pr-review-action@v1
+        with:
+          reviewer-name: github.event.actor.login
+          ready-for-review-timestamp: github.event.created_at
