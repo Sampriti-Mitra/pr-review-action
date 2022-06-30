@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Hello world action step
         id: hello
-        uses: actions/pr-review-action@v1
+        uses: pr-review-action@v1
         with:
           reviewer-name: 'Sam'
           eady-for-review-timestamp: '2014-12-25T09:30:00'
